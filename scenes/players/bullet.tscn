@@ -1,0 +1,144 @@
+[gd_scene load_steps=22 format=3 uid="uid://gin3q7olmvpw"]
+
+[ext_resource type="Script" path="res://scripts/players/bullet.gd" id="1_knn8w"]
+[ext_resource type="Texture2D" uid="uid://lcow1665ibrd" path="res://assets/bullets/Bullet_player.png" id="1_w8dik"]
+[ext_resource type="Texture2D" uid="uid://cdefdlok22yjw" path="res://assets/bullets/Explo01.png" id="2_45nsd"]
+[ext_resource type="AudioStream" uid="uid://bx3qs7r4rt3vh" path="res://assets/sound_effects/laser-gun-shot-1670.ogg" id="4_2ne8q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcga0"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byoaj"]
+atlas = ExtResource("1_w8dik")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klps1"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fp24"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6ood"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fox3"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi2uv"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0sjt"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lau64"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cx62"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0esq"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_do07w"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skmtb"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgr52"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(384, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sildx"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5efoa"]
+atlas = ExtResource("2_45nsd")
+region = Rect2(128, 384, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_noo3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byoaj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klps1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fp24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6ood")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fox3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi2uv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0sjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lau64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0cx62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0esq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_do07w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skmtb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgr52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sildx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5efoa")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_knn8w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dcga0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_noo3y")
+autoplay = "default"
+frame_progress = 0.0533375
+
+[node name="shoot_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_2ne8q")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

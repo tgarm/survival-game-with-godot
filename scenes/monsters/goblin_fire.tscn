@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://cw1tj6ib2nx2s"]
+
+[ext_resource type="Script" path="res://scripts/monsters/goblin_fire.gd" id="1_bpick"]
+[ext_resource type="Texture2D" uid="uid://dyvy77oyoku2j" path="res://assets/tiles/sprites/Torch_Blue.png" id="2_2xvh4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4yd1"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqgo3"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utc82"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i775h"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m2h6"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmo7b"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua1h3"]
+atlas = ExtResource("2_2xvh4")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fnqfx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4yd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqgo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utc82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i775h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m2h6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmo7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua1h3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yodok"]
+radius = 25.02
+
+[node name="GoblinFire" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_bpick")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fnqfx")
+autoplay = "default"
+frame_progress = 0.563345
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 7)
+shape = SubResource("CircleShape2D_yodok")
