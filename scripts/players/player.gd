@@ -63,5 +63,5 @@ func shoot():
 #func _input(event):
 #	if event.is_action_pressed("ui_accept"):
 #		shoot()
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	shoot()
